@@ -3,63 +3,134 @@
 @use "./mixins" as *;
 
 header {
-    .navBar {
-        @include flexStyling(space-between, center);
-        padding: 1.5rem 2rem;
+  .navBar {
+    @include flexStyling(space-between, center);
+    padding: 1.5rem 2rem;
 
-        .hamburgerMenu {
-            display: none;
-        }
-
-        img {
-            object-fit: contain;
-        }
-        // use this: https: //www.30secondsofcode.org/css/s/hover-underline-animation/
-        nav {
-            ul {
-                justify-content: center;
-
-                a {
-                    color: $darkGrey;
-                    text-transform: uppercase;
-                    margin-right: 2rem;
-                }
-
-                li:last-child {
-                    margin-right: 0;
-                }
-            }
-        }
+    .cart-checkout {
+      position: relative;
+      cursor: pointer;
     }
 
-    .headerContainer {
-        height: 100vh;
+    .cart-checkout .cart-number {
+      position: absolute;
+      bottom: 76%;
+      left: 48%;
+      color: red;
+      font-weight: bold;
+    }
+    .cart-checkout:hover {
+      border-radius: 0px;
+      box-shadow: 0 2px 5px;
+      height: 35px;
+      width: 52px;
+      padding: 5px 10px;
+      margin: 0 auto;
+    }
 
-        .wrapper {
-            justify-content: center;
-            height: 100%;
-            padding-right: 50%;
+    .hamburgerMenu {
+      display: none;
+    }
 
-            h1 {
-                @include fontStyle(3rem);
-                padding-bottom: 1rem;
-            }
+    img {
+      object-fit: contain;
+    }
+    // use this: https: //www.30secondsofcode.org/css/s/hover-underline-animation/
+    nav {
+      ul {
+        justify-content: center;
 
-            p {
-                @include fontStyle(1rem, $regular, $darkGrey);
-            }
+        a {
+          color: $darkGrey;
+          text-transform: uppercase;
+          margin-right: 2rem;
         }
 
+        li:last-child {
+          margin-right: 0;
+        }
+      }
     }
+  }
 
-    .indexContainer {
-        background-image: url(../assets/home.jpg);
-        @include backgroundImg();
-    }
+  .cart-page {
+    background-color: rgba(39, 82, 245, 0.5);
+    height: auto;
+    z-index: 999;
+    position: absolute;
+    width: 100%;
+    top: 2%;
+    display: flex;
+    flex: column;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    align-items: center;
+    transform: translateX(100%);
+    transition: 0.5s ease;
+  }
 
-    .contactContainer {
-        background-image: url(../assets/contact-us.jpg);
-        @include backgroundImg();
-        height: 30vh;
+  .cart-page.active-cart {
+    transform: translate(0);
+  }
+
+  .empty-text {
+    margin-bottom: 20px;
+  }
+  .purchase-btn {
+    width: 168px;
+    height: 62px;
+    margin: 20px;
+    padding: 20px;
+  }
+
+  //   display images for the cart
+
+  // addinc class for the ul
+
+  .ul-cart-images {
+    width: 100%;
+  }
+
+  .li-cart-image {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .ul-cart-images .li-cart-image img {
+    height: 200px;
+  }
+
+  // end with cart images styles
+
+  .headerContainer {
+    height: 100vh;
+
+    .wrapper {
+      justify-content: center;
+      height: 100%;
+      padding-right: 50%;
+
+      h1 {
+        @include fontStyle(3rem);
+        padding-bottom: 1rem;
+      }
+
+      p {
+        @include fontStyle(1rem, $regular, $darkGrey);
+      }
     }
+  }
+
+  .indexContainer {
+    background-image: url(../assets/home.jpg);
+    @include backgroundImg();
+  }
+
+  .contactContainer {
+    background-image: url(../assets/contact-us.jpg);
+    @include backgroundImg();
+    height: 30vh;
+  }
 }
