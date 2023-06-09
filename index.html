@@ -13,6 +13,7 @@
 
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/84bf206d2c.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/6398177c60.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
@@ -35,9 +36,14 @@
                         </li>
                     </ul>
                 </nav>
-                <a href="#">
-                    <img class="checkout" src="./assets/icons/shopping-cart-black-icon.png" alt="Checkout icon to see what's in your cart">
+                <a href="#" class="cart-checkout" id="cart-checkout">
+                    <i class="fa-solid fa-cart-plus"></i>
+                    <div class="cart-number" id="cart-number">0</div>
+
                 </a>
+               
+                 
+                
                 <a href="#" class="hamburgerMenu">
                     <i class="fa-solid fa-bars icon"></i>
                 </a>
@@ -47,6 +53,17 @@
                     <h1>NOVAS Boutique Shop</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates illum quisquam ea consequuntur blanditiis omnis tempore cupiditate perspiciatis assumenda. Vitae.</p>
                 </div>
+            </div>
+            <div class="cart-page" id="cart-page">
+               <p class="empty-text" id="empty-text">your cart is emprty</p>
+               <button class="purchase-btn" id="purchase-btn">Purchase</button>
+               <ul class=".ul-cart-images" id=".ul-cart-images">
+                <!-- <li>
+                     <img id="prod1" src="./assets/prod-1.jpg" alt="">
+                    <p>0</p>
+                    <p>Bin</p>
+                </li>  -->
+               </ul>
             </div>
     </header>
 
@@ -84,7 +101,7 @@
                                         <p class="price"><span>$35</span> $22</p>
                                     </div>
                                     <div class="iconContainer">
-                                        <a href="#checkout">
+                                        <a href="#checkout" id="add-item">
                                             <img src="./assets/icons/shopping-cart-black-icon.png" alt="Checkout icon to add item to cart">
                                         </a>
                                     </div>
@@ -387,6 +404,8 @@
         </div>
         
     </footer>
-    
+    <script src="./script.js"></script>
 </body>
 </html>
+
+
