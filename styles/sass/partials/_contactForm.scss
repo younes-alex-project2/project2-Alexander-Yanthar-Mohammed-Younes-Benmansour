@@ -1,0 +1,26 @@
+// importing mixins and variables
+@use "./mixins" as *;
+@use "./variables" as *;
+
+// contact form styling
+.contactForm .wrapper {
+
+    fieldset {
+        justify-content: space-around;
+        padding: 2rem 0;
+        height: auto;
+        width: 50%;
+
+        [type=text],
+        [type=email],
+        textarea {
+            padding-top: 2rem;
+        }
+
+        button {
+            margin-top: 2rem;
+            width: 35%;
+            text-align: center;
+        }
+    }
+}

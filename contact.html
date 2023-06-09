@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/84bf206d2c.js" crossorigin="anonymous"></script>
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <!-- Navigation bar with logo and shopping car -->
+        <div class="navBar flexRow">
+            <img src="./assets/logo-black.png" alt="Novas boutique shop logo">
+            <nav class="wrapper">
+                <ul class="flexRow">
+                    <li>
+                        <a class="hoverUnderlineAnimation" href="index.html">home</a>
+                    </li>
+                    <li>
+                        <a class="hoverUnderlineAnimation" href="index.html#blog">blog</a>
+                    </li>
+                    <li>
+                        <a class="hoverUnderlineAnimation" href="#contact">contact us</a>
+                    </li>
+                </ul>
+            </nav>
+            <a href="#">
+                <img class="checkout" src="./assets/icons/shopping-cart-black-icon.png" alt="Checkout icon to see what's in your cart">
+            </a>
+            <a href="#" class="hamburgerMenu">
+                <i class="fa-solid fa-bars icon"></i>
+            </a>
+        </div>
+        <div class="headerContainer contactContainer">
+            <div class="wrapper flexColumn">
+                <h1>Contact Us</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main section -->
+    <main class="contactForm">
+        <div class="wrapper">
+            <form action="#">
+                <fieldset class="flexColumn">
+                    <label for="name" class="sr-only">Your Name</label>
+                    <input type="text" placeholder="Your Name" id="name" required>
+                    <label for="email" class="sr-only">Your Email</label>
+                    <input type="email" placeholder="Your Email" id="email" required>
+                    <label for="message" class="sr-only">Your Message</label>
+                    <textarea name="yourMessage" id="message" rows="3" cols="30" placeholder="Your Message"></textarea>
+                    <button type="submit">Submit</button>
+                </fieldset>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer section -->
+    <footer>
+        <div class="wrapper flexRow">
+            <!-- logo/icon section -->
+            <div class="logoIcons footerContainer">
+                <img class="logo" src="./assets/logo-white.png" alt="Novas Boutique Shop logo">
+                <div class="row2">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, doloribus.</p>
+                    <ul class="flexRow">
+                        <li>
+                            <a href="#facebook">
+                                <img src="./assets/icons/facebook.svg" alt="link to Novas' facebook page">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#twitter">
+                                <img src="./assets/icons/twitter.svg" alt="Link to Nova's twitter">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#instagram">
+                                <img src="./assets/icons/instagram.svg" alt="Link to Novas' instagram page">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Contact info -->
+            <div class="contact footerContainer">
+                <h3 class="row1">Contact</h3>
+                <ul class="flexColumn row2">
+                    <li>
+                        <a href="#address"><img src="./assets/icons/address.svg"
+                                alt="Link to show address to Novas' shop in google maps"> No 40 Baria Street</a>
+                    </li>
+                    <li>
+                        <a href="#phone"><img src="./assets/icons/telephone.svg" alt="Link to call Novas' phone">
+                            156-366-6666</a>
+                    </li>
+                    <li>
+                        <a href="#email"><img src="./assets/icons/email.svg" alt="Link to Novas' email address">
+                            cool@example.com</a>
+                    </li>
+                    <li>
+                        <a href="#website"><img src="./assets/icons/globe.svg" alt="Link to Novas' website"> www.novas.com</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Profile section -->
+            <div class="userProfile footerContainer">
+                <h3 class="row1">Profile</h3>
+                <ul class="flexColumn row2">
+                    <li>
+                        <a href="#account"><img src="./assets/icons/user.svg" alt="Link to your account"> My Account</a>
+                    </li>
+                    <li>
+                        <a href="#checkout"><img src="./assets/icons/checkout.svg" alt="Link to your checkout"> Checkout</a>
+                    </li>
+                    <li>
+                        <a href="#tracking"><img src="./assets/icons/tracking.svg" alt="Link to see order tracking"> Order
+                            Tracking</a>
+                    </li>
+                    <li>
+                        <a href="#help"><img src="./assets/icons/support.svg" alt="Link to get access to help and support"> Help
+                            & Support</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Newsletter form -->
+            <div class="form footerContainer">
+                <form class="flexColumn" action="#">
+                    <h3 class="row1">Newsletter</h3>
+                    <div class="row2">
+                        <p class="subscribe">Subscribe to our newsletter</p>
+                        <fieldset>
+                            <label for="email" class="sr-only">Your e-mail</label>
+                            <input type="email" placeholder="Your e-mail.." id="email" required>
+                        </fieldset>
+                        <p>@ 2023 Novas.</p>
+                    </div>
+                </form>
+            </div>
+        
+        </div>
+    </footer>
+    
+</body>
+</html>

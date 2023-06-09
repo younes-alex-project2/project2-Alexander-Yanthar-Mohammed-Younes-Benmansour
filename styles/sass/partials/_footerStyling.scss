@@ -1,0 +1,166 @@
+// Importing mixins and variables
+@use "./mixins" as *;
+@use "./variables" as *;
+
+// footer styling
+footer {
+    background-color: $darkGrey;
+    padding: 4rem 0;
+
+    .wrapper {
+        display: flex;
+        @include flexStyling(space-between, center);
+        height: 30vh;
+
+        h3 {
+            font-size: 1.25rem;
+        }
+
+        h3,
+        p,
+        a {
+            color: $white;
+        }
+
+        .footerContainer {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            width: 25%;
+        }
+
+        .logoIcons,
+        .contact,
+        .userProfile {
+            margin-right: 1rem;
+        }
+
+        .row1 {
+            height: 20%;
+        }
+
+        .row2 {
+            height: 80%;
+        }
+
+        .logoIcons {
+
+            .logo {
+                width: 50%;
+                object-fit: contain;
+            }
+
+            p {
+                padding: 1rem 1rem 1.5rem 0;
+            }
+
+            .row2 {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between
+            }
+
+            ul {
+                @include flexStyling(space-between, center);
+                width: 50%;
+            }
+
+            ul li {
+                width: 1rem;
+            }
+
+            li:first-child {
+                width: 0.7rem;
+            }
+        }
+
+        // contact 
+        .contact {
+
+            h3 {
+                margin-bottom: 1rem;
+            }
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                li {
+                    margin-bottom: 1rem;
+                }
+
+                li:last-child {
+                    margin-bottom: 0;
+                }
+
+                li img {
+                    width: 1rem;
+                    display: inline-block;
+                    margin-right: 0.25rem;
+                }
+            }
+        }
+
+        // user profile
+        .contact,
+        .userProfile {
+
+            h3 {
+                margin-bottom: 1rem;
+            }
+
+            ul {
+                justify-content: space-between;
+
+                li {
+                    margin-bottom: 1rem;
+                }
+
+                li:last-child {
+                    margin-bottom: 0;
+                }
+
+                li img {
+                    width: 1rem;
+                    display: inline-block;
+                    margin-right: 0.25rem;
+                }
+            }
+        }
+
+        // newsletter form
+        .form {
+
+            form{
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .row2 {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+
+                .subscribe {
+                    margin-top: 1rem;
+                }
+
+
+                fieldset {
+                    border: none;
+                    padding: 0;
+                }
+
+                fieldset [type=email] {
+                    background-color: $darkGrey;
+                    padding-bottom: 0.5rem;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

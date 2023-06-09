@@ -1,0 +1,397 @@
+// importing mixins and variables
+@use "./mixins" as *;
+@use "./variables" as *;
+
+// Laptop size
+
+@media (max-width: $largeLaptop) {
+    // main section 2 -features sales
+    .featuredSales .mainContainer .mainContainerItems .individualItem .sale,
+    .featuredSales .mainContainer .mainContainerItems .individualItem .new {
+        width: 50%;
+    }
+}
+
+// laptop
+@media (max-width: $laptop) {
+    // main section 2 - featured sales
+        .featuredSales .mainContainer .mainContainerItems {
+            width: calc(33% - 2rem);
+        }
+
+    // main section 4 - instagram
+    .followInstagram .wrapper .gallery {
+        li:nth-of-type(2) {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: $tablet) {
+    // Header styling
+    header {
+        .navBar {
+            .hamburgerMenu {
+                display: block;
+            }
+
+            .checkout {
+                display: none;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+        .headerContainer {
+            height: 90vh;
+
+            .wrapper {
+                margin: 0 auto;
+                justify-content: flex-start;
+                padding-top: 4rem;
+                text-align: center;
+                padding-right: 0;
+                width: 70%;
+            }
+        }
+    }
+
+    // Section 1 - Catalogue
+    .catalogueContainer {
+
+        .wrapper {
+            margin: 0 auto;
+            padding: 0;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+
+        .imgContainer {
+            width: 75%;
+            margin: 0;
+
+            a {
+                position: relative;
+                bottom: 4rem;
+                background-color: $white;
+                border: none;
+                @include fontStyle(1rem, $medium);
+                padding: 0.5rem 1rem;
+            }
+        }
+
+
+        .imgContainer3 {
+            margin-top: 0;
+        }
+    }
+
+    // main section 2 - featured sales
+    .featuredSales {
+
+        h2 {
+            padding: 2rem 0;
+        }
+
+            .mainContainer {
+            .mainContainerItems {
+                width: calc(50% - 2rem);
+            }
+    
+            .mainContainerItems:nth-of-type(6),
+            .mainContainerItems:nth-of-type(7),
+            .mainContainerItems:nth-of-type(8),
+            .mainContainerItems:nth-of-type(9) {
+                display: none;
+            }
+        }
+        
+    } 
+    // main section 3 - major sales
+    .majorSales .wrapper {
+        flex-direction: column;
+
+        .saleContainer1,
+        .saleContainer2 {
+            height: 50vh;
+            width: 100%;
+        }
+
+        .saleContainer1 {
+            margin-right: 0;
+            justify-content: center;
+
+            .textContainer .saleAmount {
+                @include fontStyle(3rem, $bold, $pink)
+            }
+        }
+
+        .saleContainer2 .textContainer{
+            width: 80%;
+            margin-top: 2rem;
+
+            p {
+                font-size: 1.5rem;
+                @include fontStyle(1.5rem, $medium, $lightGrey)
+            }
+
+            span {
+                @include fontStyle(2.7rem, $bold, $pink);
+            }
+        }
+    }
+
+    .majorSales .wrapper .saleContainer1 {
+        margin-right: 0;
+    }
+
+    // main section 4 - instagram
+    .followInstagram .wrapper {
+
+        h2 {
+            margin-top: 1rem;
+        }
+
+        .gallery {
+            li:nth-of-type(2),
+            li:nth-of-type(3) {
+                display: none;
+            }
+        }
+    } 
+
+    // footer
+    footer {
+        padding: 1rem 0;
+        .wrapper {
+            height: auto;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0 auto;
+    
+            .logoIcons,
+            .form {
+                width: 100%;
+                align-items: center;
+                margin: 1rem 0;
+            }
+    
+            .logoIcons {
+                padding-bottom: 1rem;
+                border-bottom: 1px solid $white;
+                text-align: center;
+    
+                .flexRow {
+                    width: 100%;
+                    @include flexStyling(space-around, center);
+                }
+    
+                .logo {
+                    width: 25%;
+                }
+    
+                ul {
+                    width: 50%;
+                }
+            }
+    
+            .form {
+                padding-top: 1rem;
+                border-top: 1px solid $white;
+                text-align: center;
+    
+                form {
+                    width: 100%;
+    
+                    p {
+                        margin-top: 1rem;
+                    }
+    
+                    input[type=email] {
+                        margin-top: 1rem;
+                    }
+                }
+            }
+    
+            .contact,
+            .userProfile {
+                align-items: center;
+                margin: 1rem;
+                height: auto;
+                width: calc(45% - 2rem);
+            }
+        }
+    }
+    
+}
+
+@media (max-width: $phone) {
+    // header section
+    header {
+        .navBar {
+            .hamburgerMenu {
+                    display: block;
+                }
+
+            img {
+                display: none;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+
+        .headerContainer {
+            height: 90vh;
+            .wrapper {
+                margin: 0 auto;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                text-align: center;
+                padding-right: 0;
+            }
+        }
+
+        // contact page styling
+        .contactContainer {
+            height: 25vh;
+
+            .wrapper {
+                justify-content: center;
+
+                h1 {
+                    font-size: 2.5rem;
+                }
+            }
+        }
+        
+    }
+
+    // Section 1 - Catalogue
+    .catalogueContainer {
+
+        .wrapper {
+            margin: 0 auto;
+            padding: 0;
+            flex-direction: column;
+            padding-top: 2rem;
+        }
+
+        .imgContainer {
+            width: 100%;
+            margin: 0rem;
+        }
+
+        .imgContainer3 {
+            padding-bottom: 2rem;
+        }
+    }
+
+    // Section 2 - featured sale
+    .featuredSales {
+        width: 100%;
+
+        .mainContainer {
+            @include flexStyling(center, center);
+            flex-direction: column;
+
+            .mainContainerItems {
+                width: calc(80% - 2rem);
+            }
+
+            .mainContainerItems:nth-of-type(6),
+            .mainContainerItems:nth-of-type(7),
+            .mainContainerItems:nth-of-type(8),
+            .mainContainerItems:nth-of-type(9),
+            .mainContainerItems:nth-of-type(10) {
+                display: none;
+            }
+        }
+    }
+
+    // section 3 - major sales
+    .majorSales .wrapper {
+        margin-top: 0;
+    }
+
+    // Section 4 - instagram
+    .followInstagram .wrapper {
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .gallery {
+            flex-direction: column;
+            align-items: center;
+
+            li {
+                margin-right: 0;
+                margin-bottom: 1rem;
+                width: 85%;
+            }
+
+            li:nth-of-type(2),
+            li:nth-of-type(3) {
+                display: none;
+            }
+        }
+    }
+
+    // contact form styling 
+    .contactForm .wrapper fieldset {
+        height: auto;
+        width: 90%;
+
+        [type=text],
+        [type=email],
+        textarea {
+            width: 100%;
+        }
+
+        button {
+            width: 50%;
+        }
+    }
+
+    // footer
+    footer .wrapper {
+
+        .logoIcons .flexRow {
+            width: 100%;
+            @include flexStyling(space-around, center);
+        }
+
+        .contact,
+        .userProfile {
+            width: 100%;
+            margin-top: 0;
+            border-bottom: 1px solid $white;
+            padding-bottom: 1rem;
+        }
+
+        .form {
+            border-top: none;
+            padding-top: 0; 
+            margin-top: 0;
+        }
+    }
+
+}
+
+// small phones
+@media (max-width: $smallPhone) {
+    // header styling
+    header .headerContainer .wrapper h1 {
+        @include fontStyle(2.5rem);
+    }
+
+    // contact form main styling
+    .contactForm .wrapper fieldset button {
+        width: 50%;
+        padding: 1rem;
+    }
+
+}

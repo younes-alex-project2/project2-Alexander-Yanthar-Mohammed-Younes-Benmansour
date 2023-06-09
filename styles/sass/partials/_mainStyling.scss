@@ -1,0 +1,206 @@
+// importing scss files to use
+@use "./mixins" as *;
+@use "./variables" as *;
+
+
+// Section 1 - Catalogue
+.catalogueContainer {
+
+    .wrapper {
+        @include flexStyling(space-between, center);
+        padding: 1rem 0;
+    }
+
+    .imgContainer {
+        width: 33%;
+        margin: 1rem;
+
+        a {
+            position: relative;
+            bottom: 2.5rem;
+            background-color: $white;
+            border: none;
+            @include fontStyle(1rem, $medium);
+            padding: 0.5rem 1rem;
+        }
+    }
+
+    .imgContainer1,
+    .imgContainer3 {
+        margin-top: 3rem;
+    }
+}
+
+// Section 2 - Featured Sale
+.featuredSales {
+    width: 90%;
+    margin: 0 auto;
+    h2 {
+        width: 100%;
+        text-align: center;
+        @include fontStyle(2rem);
+    }
+
+    .viewAll {
+        text-align: center;
+    }
+
+    .mainContainer {
+        flex-wrap: wrap;
+        padding: 2rem 0;
+
+        .mainContainerItems {
+            @include borderStyle(1px, solid, $lightGreyBorder);
+            @include flexStyling(center, center);
+            margin: 1rem;
+            width: calc(20% - 2rem);
+            text-align: left;
+            padding: 0.5rem;
+            
+
+            .individualItem {
+
+                .hidden {
+                    visibility: hidden;
+                }
+
+                .sale,
+                .new {
+                    color: $white;
+                    width: 25%;
+                    text-align: center;
+                    position: relative;
+                    left: -0.5rem;
+                }
+
+                .sale {
+                    background-color: $pink;
+                }
+
+                .new {
+                    background-color: $blue;
+
+                }
+            }
+
+            .individualItem span {
+                text-decoration-line: line-through;
+            }
+
+            .itemTextContainer {
+                @include flexStyling(space-between, center);
+
+
+            .iconContainer {
+                @include borderStyle(1px, solid, $lightGreyBorder);
+                padding: 0.1rem;
+            }
+
+            .textContainer {
+                line-height: 1.2rem;
+
+                .price {
+                    @include fontStyle(0.75rem, $regular, $lightGrey);
+                }
+            }
+            }
+        }
+    }
+}
+
+// Section 3 - Sales
+.majorSales .wrapper {
+    align-items: center;
+    padding: 5rem 0;
+    margin-top: 2rem;
+
+    .saleContainer1,
+    .saleContainer2 {
+        height: 100vh;
+        @include backgroundImg();
+    }
+
+    .saleContainer1 {
+        @include flexStyling(flex-end, center);
+        width: 33%;
+        background-image: url(../assets/vert1.jpg);
+        margin-right: 1.5rem;
+        text-align: center;
+
+        .textContainer {
+            padding-bottom: 3rem;
+            width: 75%;
+
+            .saleText {
+                @include fontStyle(1rem, $medium, $beige);
+                background-color: $white;
+                margin: 0 3rem;
+            }
+
+            .saleAmount {
+                @include fontStyle(3rem, $bold, $white);
+                padding: 1.6rem 0;
+            }
+
+            a {
+                @include fontStyle(1rem, $regular, $white);
+
+                i {
+                    padding: 0.3rem;
+                }
+            }
+        }
+    }
+
+    .saleContainer2 {
+        width: 66%;
+        background-image: url(../assets/vert2.jpg);
+
+        .textContainer {
+            @include borderStyle(1px, solid, $white);
+            width: 70%;
+            margin: 0 auto;
+            margin-top: 5rem;
+            padding: 1rem;
+            text-align: center;
+
+            p {
+                @include fontStyle(2rem, $regular, $white);
+            }
+
+            span {
+                @include fontStyle(4rem, $bold, $white);
+            }
+
+        }
+    }
+}
+
+// Section 4 - Instagram
+.followInstagram .wrapper {
+    text-align: center;
+    margin-bottom: 5rem;
+
+    h2 {
+        margin-top: 4rem;
+        margin-bottom: 0.5rem;
+        @include fontStyle(2rem);
+    }
+
+    a {
+        @include fontStyle(1rem, $regular, $lightGrey);
+    }
+
+    .gallery {
+        margin: 3rem 0;
+
+        li {
+            margin-right: 1rem;
+        }
+
+        li:last-child {
+            margin-right: 0;
+        }
+    }
+}
+

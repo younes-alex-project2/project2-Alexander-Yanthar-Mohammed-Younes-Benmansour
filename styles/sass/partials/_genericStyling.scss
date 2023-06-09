@@ -1,0 +1,109 @@
+// importing scss files to use
+@use "./variables" as *;
+@use "./mixins" as *;
+
+html,
+body {
+    @include fontStyle(125%, $medium, $darkGrey);
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: $darkGrey
+}
+
+button {
+    @include borderStyle(2px);
+    @include fontStyle(1rem, $regular);
+    background-color: $white;
+    padding: 1rem 2rem;
+
+    &:hover,
+    &:focus {
+        cursor: pointer;
+    }
+}
+
+fieldset {
+    border: none;
+}
+
+fieldset [type=email],
+fieldset [type=text],
+fieldset textarea {
+    border: none;
+    border-bottom: 1px solid $lightGrey;
+    font-family: 'Poppins', sans-serif;
+    @include fontStyle(1rem, $regular, $lightGrey)
+}
+
+.flexRow,
+.flexColumn {
+    display: flex;
+}
+
+.flexColumn {
+    flex-direction: column
+}
+
+img {
+   @include imgSize();
+}
+
+
+h1,
+h2,
+h3,
+nav,
+p,
+ul {
+    margin: 0;
+    padding: 0;
+    @include fontStyle(1rem)
+}
+
+ul {
+    list-style: none;
+}
+
+.wrapper {
+    @include wrapperStyle();
+}
+
+// Hover animations
+// https: //www.30secondsofcode.org/css/s/hover-underline-animation/
+.hoverUnderlineAnimation {
+    display: inline-block;
+    position: relative;
+    color: $darkGrey;
+}
+
+.hoverUnderlineAnimation::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: $darkGrey;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+}
+
+.hoverUnderlineAnimation:hover::after,
+.hoverUnderlineAnimation:focus::after    {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+
+

@@ -1,0 +1,65 @@
+// importing scss files to use
+@use "./variables" as *;
+@use "./mixins" as *;
+
+header {
+    .navBar {
+        @include flexStyling(space-between, center);
+        padding: 1.5rem 2rem;
+
+        .hamburgerMenu {
+            display: none;
+        }
+
+        img {
+            object-fit: contain;
+        }
+        // use this: https: //www.30secondsofcode.org/css/s/hover-underline-animation/
+        nav {
+            ul {
+                justify-content: center;
+
+                a {
+                    color: $darkGrey;
+                    text-transform: uppercase;
+                    margin-right: 2rem;
+                }
+
+                li:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    .headerContainer {
+        height: 100vh;
+
+        .wrapper {
+            justify-content: center;
+            height: 100%;
+            padding-right: 50%;
+
+            h1 {
+                @include fontStyle(3rem);
+                padding-bottom: 1rem;
+            }
+
+            p {
+                @include fontStyle(1rem, $regular, $darkGrey);
+            }
+        }
+
+    }
+
+    .indexContainer {
+        background-image: url(../assets/home.jpg);
+        @include backgroundImg();
+    }
+
+    .contactContainer {
+        background-image: url(../assets/contact-us.jpg);
+        @include backgroundImg();
+        height: 30vh;
+    }
+}

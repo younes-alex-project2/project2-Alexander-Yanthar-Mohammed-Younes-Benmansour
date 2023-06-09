@@ -1,0 +1,10 @@
+// partials for project
+@use "./partials/setup";
+@use "./partials/variables";
+@use "./partials/mixins";
+@use "./partials/genericStyling";
+@use "./partials/headerStyling";
+@use "./partials/mainStyling";
+@use "./partials/footerStyling";
+@use "./partials/contactForm";
+@use "./partials/mediaQueries";
