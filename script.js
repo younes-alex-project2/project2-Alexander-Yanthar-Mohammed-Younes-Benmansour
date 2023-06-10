@@ -32,3 +32,21 @@ addItem.addEventListener(`click`, function () {
 });
 
 // ------------------End with counter in the icon --------------------------------
+
+// Display item in cart function
+
+const displayCartItems = (arrOfItems, node) => {
+  node.innerHTML = '';
+
+  arrOfItems.forEach((item) => {
+    if (item.quantity > 0) {
+      // Add createElements for the all the elements to be appended - need Younes' code to start
+
+      // Set all the created Elements to the proper values
+      // ex. img.src = item.image, img.alt = item.name, etc.
+      // append all the items in proper order to list and then the list to node.
+
+      // can dynmically add the totalValue to the bottom of this element to show the total value of all items.
+    }
+  })
+}
