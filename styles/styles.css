@@ -520,6 +520,7 @@ header .contactContainer {
 .featuredSales .mainContainer .mainContainerItems .itemTextContainer {
   justify-content: space-between;
   align-items: center;
+  display: flex;
 }
 .featuredSales .mainContainer .mainContainerItems .itemTextContainer .iconContainer {
   padding: 0.1rem;

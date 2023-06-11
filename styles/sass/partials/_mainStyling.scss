@@ -84,6 +84,9 @@
 
       .itemTextContainer {
         @include flexStyling(space-between, center);
+        display: flex;
+        
+
         // padding: 20px;
 
         .iconContainer {
