@@ -25,6 +25,10 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const itemsRef = ref(database);
 
+const mainContainer = document.querySelector('.mainContainer');
+const cartItems = [];
+const ulCartImages = document.querySelector('.ul-cart-images');
+
 const displayItems = (arrayOfItems, node) => {
   // console.log(arrayOfItems);
   node.innerHTML = ``;
@@ -38,6 +42,7 @@ const displayItems = (arrayOfItems, node) => {
     const individualItem = document.createElement(`div`);
     const itemTextContainer = document.createElement(`div`);
     const textContainer = document.createElement(`div`);
+    const iconContainer = document.createElement('div');
     liItem.classList.add(`mainContainerItems`, `flexColumn`);
     individualItem.classList.add(`individualItem`, `flexColumn`);
     itemTextContainer.classList.add(
@@ -46,17 +51,18 @@ const displayItems = (arrayOfItems, node) => {
       `flexRow`
     );
     textContainer.classList.add(`textContainer`);
-    spanItem.id = item.id;
+    iconContainer.classList.add('iconContainer');
+    itemBtn.id = item.id;
     imgItem.src = item.image;
-    spanItem.classList.add(`fa-solid`, `fa-cart-plus`);
+    itemBtn.classList.add('add-item', 'fa-solid', 'fa-cart-plus');
     itemName.textContent = item.name;
     itemPrice.textContent = `$${item.price}`;
     itemPrice.classList.add(`price`);
     textContainer.append(itemPrice);
     textContainer.append(itemName);
-    itemBtn.append(spanItem);
-    textContainer.append(itemBtn);
+    iconContainer.append(itemBtn);
     itemTextContainer.append(textContainer);
+    itemTextContainer.append(iconContainer);
     individualItem.append(imgItem);
     individualItem.append(itemTextContainer);
     liItem.append(individualItem);
@@ -70,13 +76,22 @@ onValue(itemsRef, (data) => {
   const allItems = [];
 
   if (data.exists()) {
-    console.log(data.val());
     const payload = data.val().items;
-    console.log(payload);
     for (let item in payload) {
       allItems.push(payload[item]);
     }
+
+    cartItems.length = 0;
+
+    allItems.forEach((item) => {
+      if (item.inCart) {
+        cartItems.push(item);
+      }
+    })
+
     console.log(allItems);
+    displayItems(allItems, mainContainer);
+    displayCartItems(cartItems, ulCartImages);
   } else {
     console.log(`No data to report`);
   }
@@ -87,7 +102,7 @@ onValue(itemsRef, (data) => {
 // -----creating variables for the cart icon and the items -----------
 let cartCheckOut = document.getElementById(`cart-checkout`);
 let cartPage = document.getElementById(`cart-page`);
-let addItem = document.getElementById(`add-item`);
+let addItem = document.querySelector(`.add-item`);
 let cartNumber = document.getElementById(`cart-number`);
 let count = 0;
 // const imgProd1 = document.getElementById(`prod1`);
@@ -107,21 +122,21 @@ cartCheckOut.addEventListener(`click`, function () {
 
 //------- making the counter working in the icon after clicking in the item---------------
 
-addItem.addEventListener(`click`, function (event) {
-  console.log(event.target);
-  count++;
-  cartNumber.textContent = count;
-  console.log(count);
-  emptyText.style.display = `none`;
-  purchaseBtn.style.display = `none`;
+// addItem.addEventListener(`click`, function (event) {
+//   console.log(event.target);
+//   count++;
+//   cartNumber.textContent = count;
+//   console.log(count);
+//   emptyText.style.display = `none`;
+//   purchaseBtn.style.display = `none`;
 
-  // if (event.target.itemBtn === `button`) {
-  //   spanItem.id = event.target.id;
-  //   console.log(id);
-  // }
+//   // if (event.target.itemBtn === `button`) {
+//   //   spanItem.id = event.target.id;
+//   //   console.log(id);
+//   // }
 
-  //   display image in the cart page
-});
+//   //   display image in the cart page
+// });
 
 // ------------------End with counter in the icon --------------------------------
 
@@ -132,13 +147,30 @@ const displayCartItems = (arrOfItems, node) => {
 
   arrOfItems.forEach((item) => {
     if (item.quantity > 0) {
-      // Add createElements for the all the elements to be appended - need Younes' code to start
+      const liItem = document.createElement(`li`);
+      const imgItem = document.createElement(`img`);
+      const itemName = document.createElement(`p`);
+      const itemPrice = document.createElement(`p`);
+      const removeBtn = document.createElement(`button`);
+      const quantity = document.createElement('span');
 
-      // Set all the created Elements to the proper values
-      // ex. img.src = item.image, img.alt = item.name, etc.
-      // append all the items in proper order to list and then the list to node.
+      itemName.textContent = item.name;
+      price.textContent = `$${item.price}`;
+      // set remove button class with font awesome icon
 
-      // can dynmically add the totalValue to the bottom of this element to show the total value of all items.
+      imgItem.src = item.image;
+      imgItem.id = item.id;
+      imgItem.alt = item.name;
+      removeBtn.classList.add('fa-solid', 'fa-cart-arrow-down');
+
+      quantity.textContent = item.quantity || 0;
+      liItem.append(imgItem);
+      liItem.append(quantity);
+      liItem.append(itemName);
+      liItem.append(itemPrice);
+      liItem.append(removeBtn);
+      
+      node.append(liItem);
     }
   })
 }
