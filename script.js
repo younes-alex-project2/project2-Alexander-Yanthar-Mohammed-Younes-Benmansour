@@ -8,6 +8,7 @@ import {
   getDatabase,
   ref,
   onValue,
+  update
 } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
 // Your web app's Firebase configuration
@@ -29,6 +30,14 @@ const mainContainer = document.querySelector('.mainContainer');
 const cartItems = [];
 const ulCartImages = document.querySelector('.ul-cart-images');
 
+mainContainer.addEventListener('click', function(e) {
+  updateCart(e, true);
+})
+
+ulCartImages.addEventListener('click', function(e) {
+  updateCart(e, false);
+})
+
 const displayItems = (arrayOfItems, node) => {
   // console.log(arrayOfItems);
   node.innerHTML = ``;
@@ -38,7 +47,7 @@ const displayItems = (arrayOfItems, node) => {
     const itemName = document.createElement(`p`);
     const itemPrice = document.createElement(`p`);
     const itemBtn = document.createElement(`button`);
-    const spanItem = document.createElement(`span`);
+    // const spanItem = document.createElement(`span`);
     const individualItem = document.createElement(`div`);
     const itemTextContainer = document.createElement(`div`);
     const textContainer = document.createElement(`div`);
@@ -89,13 +98,31 @@ onValue(itemsRef, (data) => {
       }
     })
 
-    console.log(allItems);
+    // console.log(allItems, inCart);
     displayItems(allItems, mainContainer);
     displayCartItems(cartItems, ulCartImages);
   } else {
     console.log(`No data to report`);
   }
+  console.log(cartItems);
+  console.log(allItems);
 });
+
+
+function updateCart(e, addToCart) {
+  if (e.target.tagName === 'BUTTON') {
+    const id = e.target.id;
+    const itemId = `item0${id}`;
+    const itemRef = ref(database, `/items/${itemId}`);
+    update(itemRef, {inCart: addToCart});
+  }
+}
+
+
+
+// ulCartImages.addEventListener('click', function(e) {
+//   updateCart(e, false);
+// })
 
 // end of firebase config
 
@@ -122,21 +149,21 @@ cartCheckOut.addEventListener(`click`, function () {
 
 //------- making the counter working in the icon after clicking in the item---------------
 
-// addItem.addEventListener(`click`, function (event) {
-//   console.log(event.target);
-//   count++;
-//   cartNumber.textContent = count;
-//   console.log(count);
-//   emptyText.style.display = `none`;
-//   purchaseBtn.style.display = `none`;
+mainContainer.addEventListener(`click`, function (event) {
+  // console.log(event.target);
+  count++;
+  cartNumber.textContent = count;
+  // console.log(count);
+  emptyText.style.display = `none`;
+  purchaseBtn.style.display = `none`;
 
-//   // if (event.target.itemBtn === `button`) {
-//   //   spanItem.id = event.target.id;
-//   //   console.log(id);
-//   // }
+  // if (event.target.itemBtn === `BUTTON`) {
+  //   id = event.target.id;
+  //   console.log(id);
+  // }
 
-//   //   display image in the cart page
-// });
+  //   display image in the cart page
+});
 
 // ------------------End with counter in the icon --------------------------------
 
@@ -146,7 +173,6 @@ const displayCartItems = (arrOfItems, node) => {
   node.innerHTML = '';
 
   arrOfItems.forEach((item) => {
-    if (item.quantity > 0) {
       const liItem = document.createElement(`li`);
       const imgItem = document.createElement(`img`);
       const itemName = document.createElement(`p`);
@@ -155,11 +181,11 @@ const displayCartItems = (arrOfItems, node) => {
       const quantity = document.createElement('span');
 
       itemName.textContent = item.name;
-      price.textContent = `$${item.price}`;
-      // set remove button class with font awesome icon
+      itemPrice.textContent = `$${item.price}`;
+      itemPrice.classList.add('itemPrice')
 
       imgItem.src = item.image;
-      imgItem.id = item.id;
+      removeBtn.id = item.id;
       imgItem.alt = item.name;
       removeBtn.classList.add('fa-solid', 'fa-cart-arrow-down');
 
@@ -172,5 +198,4 @@ const displayCartItems = (arrOfItems, node) => {
       
       node.append(liItem);
     }
-  })
-}
+  )}
