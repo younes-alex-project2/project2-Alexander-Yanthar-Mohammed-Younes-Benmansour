@@ -5,8 +5,9 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebas
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import {
-  getDabase,
+  getDatabase,
   ref,
+  onValue,
 } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
 // Your web app's Firebase configuration
@@ -21,10 +22,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const database = getDabase(app);
+const database = getDatabase(app);
 const itemsRef = ref(database);
 
 const displayItems = (arrayOfItems, node) => {
+  // console.log(arrayOfItems);
   node.innerHTML = ``;
   arrayOfItems.forEach((item) => {
     const liItem = document.createElement(`li`);
@@ -62,6 +64,24 @@ const displayItems = (arrayOfItems, node) => {
   });
 };
 
+// onvalue
+
+onValue(itemsRef, (data) => {
+  const allItems = [];
+
+  if (data.exists()) {
+    console.log(data.val());
+    const payload = data.val().items;
+    console.log(payload);
+    for (let item in payload) {
+      allItems.push(payload[item]);
+    }
+    console.log(allItems);
+  } else {
+    console.log(`No data to report`);
+  }
+});
+
 // end of firebase config
 
 // -----creating variables for the cart icon and the items -----------
@@ -87,12 +107,18 @@ cartCheckOut.addEventListener(`click`, function () {
 
 //------- making the counter working in the icon after clicking in the item---------------
 
-addItem.addEventListener(`click`, function () {
+addItem.addEventListener(`click`, function (event) {
+  console.log(event.target);
   count++;
   cartNumber.textContent = count;
   console.log(count);
   emptyText.style.display = `none`;
   purchaseBtn.style.display = `none`;
+
+  // if (event.target.itemBtn === `button`) {
+  //   spanItem.id = event.target.id;
+  //   console.log(id);
+  // }
 
   //   display image in the cart page
 });
