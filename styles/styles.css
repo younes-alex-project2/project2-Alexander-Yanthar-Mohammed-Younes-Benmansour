@@ -517,16 +517,17 @@ header .contactContainer {
 .featuredSales .mainContainer .mainContainerItems .individualItem .new {
   background-color: #88cce2;
 }
-.featuredSales .mainContainer .mainContainerItems .individualItem span {
-  text-decoration-line: line-through;
-}
 .featuredSales .mainContainer .mainContainerItems .itemTextContainer {
   justify-content: space-between;
   align-items: center;
 }
 .featuredSales .mainContainer .mainContainerItems .itemTextContainer .iconContainer {
-  border: 1px solid rgba(102, 102, 102, 0.3098039216);
   padding: 0.1rem;
+}
+.featuredSales .mainContainer .mainContainerItems .itemTextContainer .add-item {
+  border: none;
+  font-size: 20px;
+  padding: 0;
 }
 .featuredSales .mainContainer .mainContainerItems .itemTextContainer .textContainer {
   line-height: 1.2rem;
@@ -597,11 +598,6 @@ header .contactContainer {
 .majorSales .wrapper .saleContainer2 .textContainer p {
   font-size: 2rem;
   font-weight: 400;
-  color: #fff;
-}
-.majorSales .wrapper .saleContainer2 .textContainer span {
-  font-size: 4rem;
-  font-weight: 700;
   color: #fff;
 }
 
