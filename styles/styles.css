@@ -335,6 +335,9 @@ ul {
   transform-origin: bottom left;
 }
 
+header {
+  /* Inline #14 | http://127.0.0.1:5502/index.html# */
+}
 header .navBar {
   justify-content: space-between;
   align-items: center;
@@ -415,6 +418,29 @@ header .li-cart-image {
 }
 header .ul-cart-images .li-cart-image img {
   height: 200px;
+}
+header .liItem {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 10px 5px 10px black;
+  background-color: rgb(247, 247, 247);
+}
+header .imgItem {
+  width: 200px;
+}
+header .removeBtn {
+  border: none;
+  background-color: rgb(247, 247, 247);
+}
+header .imgItem {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+header header .cart-page {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-weight: solid;
 }
 header .headerContainer {
   height: 100vh;

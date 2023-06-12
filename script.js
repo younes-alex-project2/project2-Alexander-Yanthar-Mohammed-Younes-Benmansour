@@ -8,7 +8,7 @@ import {
   getDatabase,
   ref,
   onValue,
-  update
+  update,
 } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
 // Your web app's Firebase configuration
@@ -26,17 +26,17 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const itemsRef = ref(database);
 
-const mainContainer = document.querySelector('.mainContainer');
+const mainContainer = document.querySelector(".mainContainer");
 const cartItems = [];
-const ulCartImages = document.querySelector('.ul-cart-images');
+const ulCartImages = document.querySelector(".ul-cart-images");
 
-mainContainer.addEventListener('click', function(e) {
+mainContainer.addEventListener("click", function (e) {
   updateCart(e, true);
-})
+});
 
-ulCartImages.addEventListener('click', function(e) {
+ulCartImages.addEventListener("click", function (e) {
   updateCart(e, false);
-})
+});
 
 const displayItems = (arrayOfItems, node) => {
   // console.log(arrayOfItems);
@@ -51,7 +51,7 @@ const displayItems = (arrayOfItems, node) => {
     const individualItem = document.createElement(`div`);
     const itemTextContainer = document.createElement(`div`);
     const textContainer = document.createElement(`div`);
-    const iconContainer = document.createElement('div');
+    const iconContainer = document.createElement("div");
     liItem.classList.add(`mainContainerItems`, `flexColumn`);
     individualItem.classList.add(`individualItem`, `flexColumn`);
     itemTextContainer.classList.add(
@@ -60,10 +60,10 @@ const displayItems = (arrayOfItems, node) => {
       `flexRow`
     );
     textContainer.classList.add(`textContainer`);
-    iconContainer.classList.add('iconContainer');
+    iconContainer.classList.add("iconContainer");
     itemBtn.id = item.id;
     imgItem.src = item.image;
-    itemBtn.classList.add('add-item', 'fa-solid', 'fa-cart-plus');
+    itemBtn.classList.add("add-item", "fa-solid", "fa-cart-plus");
     itemName.textContent = item.name;
     itemPrice.textContent = `$${item.price}`;
     itemPrice.classList.add(`price`);
@@ -96,7 +96,7 @@ onValue(itemsRef, (data) => {
       if (item.inCart) {
         cartItems.push(item);
       }
-    })
+    });
 
     // console.log(allItems, inCart);
     displayItems(allItems, mainContainer);
@@ -108,17 +108,14 @@ onValue(itemsRef, (data) => {
   console.log(allItems);
 });
 
-
 function updateCart(e, addToCart) {
-  if (e.target.tagName === 'BUTTON') {
+  if (e.target.tagName === "BUTTON") {
     const id = e.target.id;
     const itemId = `item0${id}`;
     const itemRef = ref(database, `/items/${itemId}`);
-    update(itemRef, {inCart: addToCart});
+    update(itemRef, { inCart: addToCart });
   }
 }
-
-
 
 // ulCartImages.addEventListener('click', function(e) {
 //   updateCart(e, false);
@@ -170,32 +167,41 @@ mainContainer.addEventListener(`click`, function (event) {
 // Display item in cart function
 
 const displayCartItems = (arrOfItems, node) => {
-  node.innerHTML = '';
+  node.innerHTML = "";
 
   arrOfItems.forEach((item) => {
-      const liItem = document.createElement(`li`);
-      const imgItem = document.createElement(`img`);
-      const itemName = document.createElement(`p`);
-      const itemPrice = document.createElement(`p`);
-      const removeBtn = document.createElement(`button`);
-      const quantity = document.createElement('span');
+    const liItem = document.createElement(`li`);
+    const imgItem = document.createElement(`img`);
+    const itemName = document.createElement(`p`);
+    const itemPrice = document.createElement(`p`);
+    const removeBtn = document.createElement(`button`);
+    const quantity = document.createElement("span");
 
-      itemName.textContent = item.name;
-      itemPrice.textContent = `$${item.price}`;
-      itemPrice.classList.add('itemPrice')
+    itemName.textContent = item.name;
+    itemPrice.textContent = `$${item.price}`;
+    itemPrice.classList.add("itemPrice");
 
-      imgItem.src = item.image;
-      removeBtn.id = item.id;
-      imgItem.alt = item.name;
-      removeBtn.classList.add('fa-solid', 'fa-cart-arrow-down');
+    imgItem.src = item.image;
+    removeBtn.id = item.id;
+    imgItem.alt = item.name;
+    removeBtn.classList.add("fa-solid", "fa-cart-arrow-down");
 
-      quantity.textContent = item.quantity || 0;
-      liItem.append(imgItem);
-      liItem.append(quantity);
-      liItem.append(itemName);
-      liItem.append(itemPrice);
-      liItem.append(removeBtn);
-      
-      node.append(liItem);
-    }
-  )}
+    quantity.textContent = item.quantity || 0;
+    liItem.append(imgItem);
+    liItem.append(quantity);
+    liItem.append(itemName);
+    liItem.append(itemPrice);
+    liItem.append(removeBtn);
+
+    node.append(liItem);
+
+    // adding classes
+
+    liItem.classList.add(`liItem`);
+    imgItem.classList.add(`imgItem`);
+    itemName.classList.add(`itemName`);
+    itemPrice.classList.add(`itemPrice`);
+    removeBtn.classList.add(`removeBtn`);
+    quantity.classList.add(`quantity`);
+  });
+};
