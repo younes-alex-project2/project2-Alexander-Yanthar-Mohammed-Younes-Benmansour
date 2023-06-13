@@ -9,6 +9,7 @@ import {
   ref,
   onValue,
   update,
+  get,
 } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
 // Your web app's Firebase configuration
@@ -36,6 +37,12 @@ mainContainer.addEventListener("click", function (e) {
 
 ulCartImages.addEventListener("click", function (e) {
   updateCart(e, false);
+  // adding the count cart will be the number displayed
+  // count--;
+  // cartNumber.textContent = count;
+  // if(addToCart){
+
+  // }
 });
 
 const displayItems = (arrayOfItems, node) => {
@@ -64,6 +71,7 @@ const displayItems = (arrayOfItems, node) => {
     itemBtn.id = item.id;
     imgItem.src = item.image;
     itemBtn.classList.add("add-item", "fa-solid", "fa-cart-plus");
+    itemBtn.textContent = `add`;
     itemName.textContent = item.name;
     itemPrice.textContent = `$${item.price}`;
     itemPrice.classList.add(`price`);
@@ -111,9 +119,40 @@ onValue(itemsRef, (data) => {
 function updateCart(e, addToCart) {
   if (e.target.tagName === "BUTTON") {
     const id = e.target.id;
-    const itemId = `item0${id}`;
+    const itemId = `item${id}`;
     const itemRef = ref(database, `/items/${itemId}`);
-    update(itemRef, { inCart: addToCart });
+    const updateData = { quantity: 1, inCart: addToCart };
+    console.log(itemId);
+    let originalItemPrice = itemData.price;
+
+    get(itemRef).then((snapshot) => {
+      const itemData = snapshot.val();
+      if (itemData) {
+        let newQuantity = (itemData.quantity || 0) + (addToCart ? 1 : -1);
+
+        let totalItemPrice = 0;
+        if (newQuantity > 0) {
+          totalItemPrice = originalItemPrice * newQuantity;
+        }
+        if (newQuantity >= 2) {
+          totalItemPrice = originalItemPrice * itemData.quantity;
+          console.log(totalItemPrice);
+        }
+
+        const updateData = {
+          quantity: newQuantity,
+          inCart: newQuantity > 0,
+          price: totalItemPrice,
+        };
+        update(itemRef, updateData)
+          .then(() => {
+            console.log(`update`);
+          })
+          .catch((er) => {
+            console.error(`failed`, er);
+          });
+      }
+    });
   }
 }
 
