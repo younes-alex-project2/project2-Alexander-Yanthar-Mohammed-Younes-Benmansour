@@ -71,7 +71,7 @@ const displayItems = (arrayOfItems, node) => {
     itemBtn.id = item.id;
     imgItem.src = item.image;
     itemBtn.classList.add("add-item", "fa-solid", "fa-cart-plus");
-    itemBtn.textContent = `add`;
+
     itemName.textContent = item.name;
     itemPrice.textContent = `$${item.price}`;
     itemPrice.classList.add(`price`);
@@ -121,28 +121,21 @@ function updateCart(e, addToCart) {
     const id = e.target.id;
     const itemId = `item${id}`;
     const itemRef = ref(database, `/items/${itemId}`);
-    const updateData = { quantity: 1, inCart: addToCart };
+    // const updateData = { quantity: 1, inCart: addToCart };
     console.log(itemId);
-    let originalItemPrice = itemData.price;
+    // let originalItemPrice = itemData.price;
 
     get(itemRef).then((snapshot) => {
       const itemData = snapshot.val();
       if (itemData) {
         let newQuantity = (itemData.quantity || 0) + (addToCart ? 1 : -1);
 
-        let totalItemPrice = 0;
-        if (newQuantity > 0) {
-          totalItemPrice = originalItemPrice * newQuantity;
-        }
-        if (newQuantity >= 2) {
-          totalItemPrice = originalItemPrice * itemData.quantity;
-          console.log(totalItemPrice);
-        }
+        let newTotalItemPrices = newQuantity * itemData.price;
 
         const updateData = {
           quantity: newQuantity,
           inCart: newQuantity > 0,
-          price: totalItemPrice,
+          totalItemPrice: newTotalItemPrices,
         };
         update(itemRef, updateData)
           .then(() => {
@@ -176,11 +169,6 @@ let count = 0;
 const emptyText = document.getElementById(`empty-text`);
 const purchaseBtn = document.getElementById(`purchase-btn`);
 
-// ----------- pop-ip the cart's page -----------
-cartCheckOut.addEventListener(`click`, function () {
-  cartPage.classList.toggle(`active-cart`);
-});
-
 // ---------------End with cart page pop up -----------------------------
 
 //------- making the counter working in the icon after clicking in the item---------------
@@ -189,20 +177,14 @@ mainContainer.addEventListener(`click`, function (event) {
   // console.log(event.target);
   count++;
   cartNumber.textContent = count;
+
   // console.log(count);
   emptyText.style.display = `none`;
   purchaseBtn.style.display = `none`;
-
-  // if (event.target.itemBtn === `BUTTON`) {
-  //   id = event.target.id;
-  //   console.log(id);
-  // }
-
-  //   display image in the cart page
 });
 
 // ------------------End with counter in the icon --------------------------------
-
+let finalTotalPrice = document.getElementById(`finalitemsprice`);
 // Display item in cart function
 
 const displayCartItems = (arrOfItems, node) => {
@@ -212,13 +194,14 @@ const displayCartItems = (arrOfItems, node) => {
     const liItem = document.createElement(`li`);
     const imgItem = document.createElement(`img`);
     const itemName = document.createElement(`p`);
-    const itemPrice = document.createElement(`p`);
+    const newTotalItemPrices = document.createElement(`p`);
     const removeBtn = document.createElement(`button`);
     const quantity = document.createElement("span");
 
     itemName.textContent = item.name;
-    itemPrice.textContent = `$${item.price}`;
-    itemPrice.classList.add("itemPrice");
+    newTotalItemPrices.textContent = `$${item.totalItemPrice}`;
+    newTotalItemPrices.classList.add("itemPrice");
+    // finalTotalPrice.textContent = `total price: 0`;
 
     imgItem.src = item.image;
     removeBtn.id = item.id;
@@ -229,18 +212,47 @@ const displayCartItems = (arrOfItems, node) => {
     liItem.append(imgItem);
     liItem.append(quantity);
     liItem.append(itemName);
-    liItem.append(itemPrice);
+    liItem.append(newTotalItemPrices);
     liItem.append(removeBtn);
 
     node.append(liItem);
+    node.append(finalTotalPrice);
 
     // adding classes
+    removeBtn.addEventListener(`click`, () => {
+      count--;
+      cartNumber.textContent = count;
+      console.log(removeBtn, cartCheckOut);
+    });
 
     liItem.classList.add(`liItem`);
     imgItem.classList.add(`imgItem`);
     itemName.classList.add(`itemName`);
-    itemPrice.classList.add(`itemPrice`);
+    newTotalItemPrices.classList.add(`itemPrice`);
     removeBtn.classList.add(`removeBtn`);
     quantity.classList.add(`quantity`);
   });
 };
+
+// ----------- pop-ip the cart's page -----------
+// making function for finalTotal price
+
+cartCheckOut.addEventListener(`click`, function () {
+  cartPage.classList.toggle(`active-cart`);
+  finalTotalPrice.textContent = `${calculateFinalTotalPrice()}`;
+  console.log(finalTotalPrice.textContent);
+});
+
+function calculateFinalTotalPrice() {
+  let totalCount = 0;
+
+  for (let i = 0; i < cartItems.length; i++) {
+    console.log(cartItems[i].totalItemPrice);
+    totalCount += cartItems[i].totalItemPrice;
+    console.log(finalTotalPrice);
+    console.log(totalCount);
+
+    console.log(finalTotalPrice);
+  }
+  return totalCount;
+}
