@@ -114,10 +114,13 @@ header {
     align-items: center;
     box-shadow: 10px 5px 10px black;
     background-color: rgb(247, 247, 247);
+    margin-bottom: 15px;
   }
 
   .imgItem {
     width: 200px;
+    box-shadow: 10px 5px 10px black;
+    margin: 20px;
   }
 
   .removeBtn {
@@ -125,15 +128,24 @@ header {
     background-color: rgb(247, 247, 247);
   }
 
-  .imgItem {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
+  // .imgItem {
+  //   padding-top: 20px;
+  //   padding-bottom: 20px;
+  // }
 
   header .cart-page {
     text-transform: uppercase;
     font-weight: 500;
     font-weight: solid;
+  }
+  #finalitemsprice {
+    margin: 0 auto;
+    width: 149px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    height: 40px;
+    padding: 10px;
+    background-color: white;
   }
 
   // end of styling
