@@ -223,6 +223,7 @@ const displayCartItems = (arrOfItems, node) => {
       count--;
       cartNumber.textContent = count;
       console.log(removeBtn, cartCheckOut);
+      finalTotalPrice.textContent = `${calculateFinalTotalPriceDecreasing()}`;
     });
 
     liItem.classList.add(`liItem`);
@@ -256,3 +257,13 @@ function calculateFinalTotalPrice() {
   }
   return totalCount;
 }
+
+function calculateFinalTotalPriceDecreasing() {
+  let totalCountDown = 0;
+  for (let i = 0; i < cartItems.length; i++) {
+    // let totalCountDownFinal = totalCountDown - cartItems[i].totalItemPrice;
+    totalCountDown -= cartItems[i].totalItemPrice;
+  }
+  return totalCountDown;
+}
+console.log(calculateFinalTotalPriceDecreasing());
