@@ -86,7 +86,7 @@ header {
 
   //   display images for the cart
 
-  // addinc class for the ul
+  // adding class for the ul
 
   .ul-cart-images {
     width: 100%;
@@ -103,6 +103,52 @@ header {
   }
 
   // end with cart images styles
+
+  // adding style for items after we set the firebase
+
+  /* Inline #14 | http://127.0.0.1:5502/index.html# */
+
+  .liItem {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: 10px 5px 10px black;
+    background-color: rgb(247, 247, 247);
+    margin-bottom: 15px;
+  }
+
+  .imgItem {
+    width: 200px;
+    box-shadow: 10px 5px 10px black;
+    margin: 20px;
+  }
+
+  .removeBtn {
+    border: none;
+    background-color: rgb(247, 247, 247);
+  }
+
+  // .imgItem {
+  //   padding-top: 20px;
+  //   padding-bottom: 20px;
+  // }
+
+  header .cart-page {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-weight: solid;
+  }
+  #finalitemsprice {
+    margin: 0 auto;
+    width: 149px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    height: 40px;
+    padding: 10px;
+    background-color: white;
+  }
+
+  // end of styling
 
   .headerContainer {
     height: 100vh;

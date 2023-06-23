@@ -1,0 +1,105 @@
+{
+  "items": {
+    "item1": {
+      "image": "./assets/prod-1.jpg",
+      "name": "Malm Chair",
+      "price": 22,
+      "quantity": 0,
+      "inCart": false,
+      "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
+      "id": 1,
+
+      "totalItemPrice": 0
+    },
+    "item2": {
+      "image": "./assets/prod-2.jpg",
+      "name": "Pendant Lamp",
+      "price": 45,
+      "quantity": 0,
+      "inCart": false,
+      "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
+      "id": 2,
+      "totalItemPrice": 0
+    },
+    "item3": {
+      "image": "./assets/prod-3.jpg",
+      "name": "Magnolia Dream",
+      "price": 18,
+      "quantity": 0,
+      "inCart": false,
+      "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
+      "id": 3,
+      "totalItemPrice": 0
+    },
+    "item4": {
+      "image": "./assets/prod-4.jpg",
+      "name": "Malm Chair",
+      "price": 45,
+      "quantity": 0,
+      "inCart": false,
+      "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
+      "id": 4,
+      "totalItemPrice": 0
+    },
+    "item5": {
+      "image": "./assets/prod-5.jpg",
+      "name": "Pendant Lamp",
+      "price": 45,
+      "quantity": 0,
+      "inCart": false,
+      "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
+      "id": 5,
+      "totalItemPrice": 0
+    },
+    "item6": {
+      "image": "./assets/prod-6.jpg",
+      "name": "Candle",
+      "price": 45,
+      "quantity": 0,
+      "inCart": false,
+      "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
+      "id": 6,
+      "totalItemPrice": 0
+    },
+    "item7": {
+      "image": "./assets/prod-7.jpg",
+      "name": "Lorem Ipsum",
+      "price": 45,
+      "quantity": 0,
+      "inCart": false,
+      "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
+      "id": 7,
+      "totalItemPrice": 0
+    },
+    "item8": {
+      "image": "./assets/prod-8.jpg",
+      "name": "Pendant Lamp",
+      "price": 45,
+      "quantity": 0,
+      "inCart": false,
+      "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
+      "id": 8,
+      "totalItemPrice": 0
+    },
+    "item9": {
+      "image": "./assets/prod-9.jpg",
+      "name": "Malm Chair",
+      "price": 45,
+      "quantity": 0,
+      "inCart": false,
+      "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
+      "id": 9,
+      "totalItemPrice": 0
+    },
+    "item11": {
+      "image": "./assets/prod-10.jpg",
+      "name": "Pendant Lamp",
+      "price": 45,
+      "quantity": 0,
+      "inCart": false,
+      "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
+      "id": 11,
+      "totalItemPrice": 0
+    }
+  }
+}
