@@ -8,7 +8,6 @@
       "inCart": false,
       "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
       "id": 1,
-
       "totalItemPrice": 0
     },
     "item2": {
@@ -18,7 +17,8 @@
       "quantity": 0,
       "inCart": false,
       "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
-      "id": 2
+      "id": 2,
+      "totalItemPrice": 0
     },
     "item3": {
       "image": "./assets/prod-3.jpg",
@@ -27,7 +27,8 @@
       "quantity": 0,
       "inCart": false,
       "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
-      "id": 3
+      "id": 3,
+      "totalItemPrice": 0
     },
     "item4": {
       "image": "./assets/prod-4.jpg",
@@ -36,7 +37,8 @@
       "quantity": 0,
       "inCart": false,
       "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
-      "id": 4
+      "id": 4,
+      "totalItemPrice": 0
     },
     "item5": {
       "image": "./assets/prod-5.jpg",
@@ -45,7 +47,8 @@
       "quantity": 0,
       "inCart": false,
       "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
-      "id": 5
+      "id": 5,
+      "totalItemPrice": 0
     },
     "item6": {
       "image": "./assets/prod-6.jpg",
@@ -54,7 +57,8 @@
       "quantity": 0,
       "inCart": false,
       "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
-      "id": 6
+      "id": 6,
+      "totalItemPrice": 0
     },
     "item7": {
       "image": "./assets/prod-7.jpg",
@@ -63,7 +67,8 @@
       "quantity": 0,
       "inCart": false,
       "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
-      "id": 7
+      "id": 7,
+      "totalItemPrice": 0
     },
     "item8": {
       "image": "./assets/prod-8.jpg",
@@ -72,7 +77,8 @@
       "quantity": 0,
       "inCart": false,
       "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
-      "id": 8
+      "id": 8,
+      "totalItemPrice": 0
     },
     "item9": {
       "image": "./assets/prod-9.jpg",
@@ -81,7 +87,8 @@
       "quantity": 0,
       "inCart": false,
       "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
-      "id": 9
+      "id": 9,
+      "totalItemPrice": 0
     },
     "item11": {
       "image": "./assets/prod-10.jpg",
@@ -90,7 +97,8 @@
       "quantity": 0,
       "inCart": false,
       "cartIcon": "./assets/icons/shopping-cart-black-icon.png",
-      "id": 11
+      "id": 10,
+      "totalItemPrice": 0
     }
   }
 }
