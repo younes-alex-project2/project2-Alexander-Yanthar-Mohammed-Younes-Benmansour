@@ -109,11 +109,12 @@ onValue(itemsRef, (data) => {
     // console.log(allItems, inCart);
     displayItems(allItems, mainContainer);
     displayCartItems(cartItems, ulCartImages);
-  } else {
-    console.log(`No data to report`);
   }
-  console.log(cartItems);
-  console.log(allItems);
+  // else {
+  //     console.log(`No data to report`);
+  // }
+  // console.log(cartItems);
+  // console.log(allItems);
 });
 
 function updateCart(e, addToCart) {
@@ -122,7 +123,7 @@ function updateCart(e, addToCart) {
     const itemId = `item${id}`;
     const itemRef = ref(database, `/items/${itemId}`);
     // const updateData = { quantity: 1, inCart: addToCart };
-    console.log(itemId);
+    // console.log(itemId);
     // let originalItemPrice = itemData.price;
 
     get(itemRef).then((snapshot) => {
@@ -139,7 +140,10 @@ function updateCart(e, addToCart) {
         };
         update(itemRef, updateData)
           .then(() => {
-            console.log(`update`);
+            // finalTotalPrice.textContent = `${calculateFinalTotalPriceDecreasing()}`;
+            // calculateFinalTotalPrice();
+            finalTotalPrice.textContent = `Total: $${calculateFinalTotalPrice()}`;
+            // console.log(`update`);
           })
           .catch((er) => {
             console.error(`failed`, er);
@@ -222,8 +226,8 @@ const displayCartItems = (arrOfItems, node) => {
     removeBtn.addEventListener(`click`, () => {
       count--;
       cartNumber.textContent = count;
-      console.log(removeBtn, cartCheckOut);
-      finalTotalPrice.textContent = `${calculateFinalTotalPriceDecreasing()}`;
+      // console.log(removeBtn, cartCheckOut);
+      // finalTotalPrice.textContent = `${calculateFinalTotalPriceDecreasing()}`;
     });
 
     liItem.classList.add(`liItem`);
@@ -240,20 +244,20 @@ const displayCartItems = (arrOfItems, node) => {
 
 cartCheckOut.addEventListener(`click`, function () {
   cartPage.classList.toggle(`active-cart`);
-  finalTotalPrice.textContent = `${calculateFinalTotalPrice()}`;
-  console.log(finalTotalPrice.textContent);
+  // finalTotalPrice.textContent = `${calculateFinalTotalPrice()}`;
+  // console.log(finalTotalPrice.textContent);
 });
 
 function calculateFinalTotalPrice() {
   let totalCount = 0;
 
   for (let i = 0; i < cartItems.length; i++) {
-    console.log(cartItems[i].totalItemPrice);
+    // console.log(cartItems[i].totalItemPrice);
     totalCount += cartItems[i].totalItemPrice;
-    console.log(finalTotalPrice);
-    console.log(totalCount);
+    // console.log(finalTotalPrice);
+    // console.log(totalCount);
 
-    console.log(finalTotalPrice);
+    // console.log(finalTotalPrice);
   }
   return totalCount;
 }
@@ -262,8 +266,9 @@ function calculateFinalTotalPriceDecreasing() {
   let totalCountDown = 0;
   for (let i = 0; i < cartItems.length; i++) {
     // let totalCountDownFinal = totalCountDown - cartItems[i].totalItemPrice;
-    totalCountDown -= cartItems[i].totalItemPrice;
+    totalCountDown = Math.abs(totalCountDown - cartItems[i].totalItemPrice);
+    // console.log(totalCountDown);
   }
   return totalCountDown;
 }
-console.log(calculateFinalTotalPriceDecreasing());
+// console.log(calculateFinalTotalPriceDecreasing());
