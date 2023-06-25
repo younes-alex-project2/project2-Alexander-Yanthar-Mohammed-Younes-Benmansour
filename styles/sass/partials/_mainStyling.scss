@@ -78,22 +78,16 @@
         }
       }
 
-      //   .individualItem span {
-      //     text-decoration-line: line-through;
-      //   }
 
       .itemTextContainer {
         @include flexStyling(space-between, center);
         display: flex;
         
 
-        // padding: 20px;
-
         .iconContainer {
-          //   @include borderStyle(1px, solid, $lightGreyBorder);
           padding: 0.1rem;
         }
-        .add-item {
+        .addItem {
           border: none;
           font-size: 20px;
           padding: 0;
@@ -171,9 +165,6 @@
         @include fontStyle(2rem, $regular, $white);
       }
 
-      //   span {
-      //     @include fontStyle(4rem, $bold, $white);
-      //   }
     }
   }
 }
