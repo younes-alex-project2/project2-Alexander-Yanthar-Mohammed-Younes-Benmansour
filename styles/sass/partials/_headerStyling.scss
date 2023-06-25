@@ -7,19 +7,19 @@ header {
     @include flexStyling(space-between, center);
     padding: 1.5rem 2rem;
 
-    .cart-checkout {
+    .cartCheckout {
       position: relative;
       cursor: pointer;
     }
 
-    .cart-checkout .cart-number {
+    .cartCheckout .cartNumber {
       position: absolute;
       bottom: 76%;
       left: 48%;
       color: red;
       font-weight: bold;
     }
-    .cart-checkout:hover {
+    .cartCheckout:hover {
       border-radius: 0px;
       box-shadow: 0 2px 5px;
       height: 35px;
@@ -53,7 +53,7 @@ header {
     }
   }
 
-  .cart-page {
+  .cartPage {
     background-color: rgba(39, 82, 245, 0.5);
     height: auto;
     z-index: 999;
@@ -70,14 +70,14 @@ header {
     transition: 0.5s ease;
   }
 
-  .cart-page.active-cart {
+  .cartPage.active-cart {
     transform: translate(0);
   }
 
-  .empty-text {
+  .emptyText {
     margin-bottom: 20px;
   }
-  .purchase-btn {
+  .purchaseBtn {
     width: 168px;
     height: 62px;
     margin: 20px;
@@ -88,17 +88,17 @@ header {
 
   // adding class for the ul
 
-  .ul-cart-images {
+  .ulCartImages {
     width: 100%;
   }
 
-  .li-cart-image {
+  .liCartImage {
     display: flex;
     justify-content: space-around;
     width: 100%;
   }
 
-  .ul-cart-images .li-cart-image img {
+  .ulCartImages .liCartImage img {
     height: 200px;
   }
 
@@ -133,7 +133,7 @@ header {
   //   padding-bottom: 20px;
   // }
 
-  header .cart-page {
+  header .cartPage {
     text-transform: uppercase;
     font-weight: 500;
     font-weight: solid;
