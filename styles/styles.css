@@ -343,18 +343,18 @@ header .navBar {
   align-items: center;
   padding: 1.5rem 2rem;
 }
-header .navBar .cart-checkout {
+header .navBar .cartCheckout {
   position: relative;
   cursor: pointer;
 }
-header .navBar .cart-checkout .cart-number {
+header .navBar .cartCheckout .cartNumber {
   position: absolute;
   bottom: 76%;
   left: 48%;
   color: red;
   font-weight: bold;
 }
-header .navBar .cart-checkout:hover {
+header .navBar .cartCheckout:hover {
   border-radius: 0px;
   box-shadow: 0 2px 5px;
   height: 35px;
@@ -380,7 +380,7 @@ header .navBar nav ul a {
 header .navBar nav ul li:last-child {
   margin-right: 0;
 }
-header .cart-page {
+header .cartPage {
   background-color: rgba(39, 82, 245, 0.5);
   height: auto;
   z-index: 999;
@@ -396,27 +396,27 @@ header .cart-page {
   transform: translateX(100%);
   transition: 0.5s ease;
 }
-header .cart-page.active-cart {
+header .cartPage.active-cart {
   transform: translate(0);
 }
-header .empty-text {
+header .emptyText {
   margin-bottom: 20px;
 }
-header .purchase-btn {
+header .purchaseBtn {
   width: 168px;
   height: 62px;
   margin: 20px;
   padding: 20px;
 }
-header .ul-cart-images {
+header .ulCartImages {
   width: 100%;
 }
-header .li-cart-image {
+header .liCartImage {
   display: flex;
   justify-content: space-around;
   width: 100%;
 }
-header .ul-cart-images .li-cart-image img {
+header .ulCartImages .liCartImage img {
   height: 200px;
 }
 header .liItem {
@@ -436,7 +436,7 @@ header .removeBtn {
   border: none;
   background-color: rgb(247, 247, 247);
 }
-header header .cart-page {
+header header .cartPage {
   text-transform: uppercase;
   font-weight: 500;
   font-weight: solid;
@@ -559,7 +559,7 @@ header .contactContainer {
 .featuredSales .mainContainer .mainContainerItems .itemTextContainer .iconContainer {
   padding: 0.1rem;
 }
-.featuredSales .mainContainer .mainContainerItems .itemTextContainer .add-item {
+.featuredSales .mainContainer .mainContainerItems .itemTextContainer .addItem {
   border: none;
   font-size: 20px;
   padding: 0;

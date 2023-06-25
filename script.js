@@ -29,7 +29,7 @@ const itemsRef = ref(database);
 
 const mainContainer = document.querySelector(".mainContainer");
 const cartItems = [];
-const ulCartImages = document.querySelector(".ul-cart-images");
+const ulCartImages = document.querySelector(".ulCartImages");
 
 mainContainer.addEventListener("click", function (e) {
   updateCart(e, true);
@@ -37,16 +37,10 @@ mainContainer.addEventListener("click", function (e) {
 
 ulCartImages.addEventListener("click", function (e) {
   updateCart(e, false);
-  // adding the count cart will be the number displayed
-  // count--;
-  // cartNumber.textContent = count;
-  // if(addToCart){
-
-  // }
 });
 
 const displayItems = (arrayOfItems, node) => {
-  // console.log(arrayOfItems);
+
   node.innerHTML = ``;
   arrayOfItems.forEach((item) => {
     const liItem = document.createElement(`li`);
@@ -54,7 +48,6 @@ const displayItems = (arrayOfItems, node) => {
     const itemName = document.createElement(`p`);
     const itemPrice = document.createElement(`p`);
     const itemBtn = document.createElement(`button`);
-    // const spanItem = document.createElement(`span`);
     const individualItem = document.createElement(`div`);
     const itemTextContainer = document.createElement(`div`);
     const textContainer = document.createElement(`div`);
@@ -70,7 +63,7 @@ const displayItems = (arrayOfItems, node) => {
     iconContainer.classList.add("iconContainer");
     itemBtn.id = item.id;
     imgItem.src = item.image;
-    itemBtn.classList.add("add-item", "fa-solid", "fa-cart-plus");
+    itemBtn.classList.add("addItem", "fa-solid", "fa-cart-plus");
 
     itemName.textContent = item.name;
     itemPrice.textContent = `$${item.price}`;
@@ -106,15 +99,9 @@ onValue(itemsRef, (data) => {
       }
     });
 
-    // console.log(allItems, inCart);
     displayItems(allItems, mainContainer);
     displayCartItems(cartItems, ulCartImages);
   }
-  // else {
-  //     console.log(`No data to report`);
-  // }
-  // console.log(cartItems);
-  // console.log(allItems);
 });
 
 function updateCart(e, addToCart) {
@@ -122,9 +109,6 @@ function updateCart(e, addToCart) {
     const id = e.target.id;
     const itemId = `item${id}`;
     const itemRef = ref(database, `/items/${itemId}`);
-    // const updateData = { quantity: 1, inCart: addToCart };
-    // console.log(itemId);
-    // let originalItemPrice = itemData.price;
 
     get(itemRef).then((snapshot) => {
       const itemData = snapshot.val();
@@ -140,10 +124,7 @@ function updateCart(e, addToCart) {
         };
         update(itemRef, updateData)
           .then(() => {
-            // finalTotalPrice.textContent = `${calculateFinalTotalPriceDecreasing()}`;
-            // calculateFinalTotalPrice();
             finalTotalPrice.textContent = `Total: $${calculateFinalTotalPrice()}`;
-            // console.log(`update`);
           })
           .catch((er) => {
             console.error(`failed`, er);
@@ -153,20 +134,14 @@ function updateCart(e, addToCart) {
   }
 }
 
-// ulCartImages.addEventListener('click', function(e) {
-//   updateCart(e, false);
-// })
 
 // end of firebase config
 
 // -----creating variables for the cart icon and the items -----------
 let cartCheckOut = document.getElementById(`cart-checkout`);
 let cartPage = document.getElementById(`cart-page`);
-let addItem = document.querySelector(`.add-item`);
 let cartNumber = document.getElementById(`cart-number`);
 let count = 0;
-// const imgProd1 = document.getElementById(`prod1`);
-// imgProd1.src = "./assets/prod-1.jpg";
 
 // making variables for empty cart
 
@@ -177,12 +152,10 @@ const purchaseBtn = document.getElementById(`purchase-btn`);
 
 //------- making the counter working in the icon after clicking in the item---------------
 
-mainContainer.addEventListener(`click`, function (event) {
-  // console.log(event.target);
+mainContainer.addEventListener(`click`, function () {
   count++;
   cartNumber.textContent = count;
 
-  // console.log(count);
   emptyText.style.display = `none`;
   purchaseBtn.style.display = `none`;
 });
@@ -205,7 +178,6 @@ const displayCartItems = (arrOfItems, node) => {
     itemName.textContent = item.name;
     newTotalItemPrices.textContent = `$${item.totalItemPrice}`;
     newTotalItemPrices.classList.add("itemPrice");
-    // finalTotalPrice.textContent = `total price: 0`;
 
     imgItem.src = item.image;
     removeBtn.id = item.id;
@@ -226,8 +198,6 @@ const displayCartItems = (arrOfItems, node) => {
     removeBtn.addEventListener(`click`, () => {
       count--;
       cartNumber.textContent = count;
-      // console.log(removeBtn, cartCheckOut);
-      // finalTotalPrice.textContent = `${calculateFinalTotalPriceDecreasing()}`;
     });
 
     liItem.classList.add(`liItem`);
@@ -244,31 +214,15 @@ const displayCartItems = (arrOfItems, node) => {
 
 cartCheckOut.addEventListener(`click`, function () {
   cartPage.classList.toggle(`active-cart`);
-  // finalTotalPrice.textContent = `${calculateFinalTotalPrice()}`;
-  // console.log(finalTotalPrice.textContent);
 });
 
 function calculateFinalTotalPrice() {
   let totalCount = 0;
 
   for (let i = 0; i < cartItems.length; i++) {
-    // console.log(cartItems[i].totalItemPrice);
-    totalCount += cartItems[i].totalItemPrice;
-    // console.log(finalTotalPrice);
-    // console.log(totalCount);
 
-    // console.log(finalTotalPrice);
+    totalCount += cartItems[i].totalItemPrice;
   }
   return totalCount;
 }
 
-function calculateFinalTotalPriceDecreasing() {
-  let totalCountDown = 0;
-  for (let i = 0; i < cartItems.length; i++) {
-    // let totalCountDownFinal = totalCountDown - cartItems[i].totalItemPrice;
-    totalCountDown = Math.abs(totalCountDown - cartItems[i].totalItemPrice);
-    // console.log(totalCountDown);
-  }
-  return totalCountDown;
-}
-// console.log(calculateFinalTotalPriceDecreasing());
